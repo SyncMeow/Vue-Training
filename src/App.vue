@@ -1,12 +1,15 @@
 <script setup>
-    console.log("My first component.");
+    let message = "<u>Hello Vue</u>";
+    let name = "content";
 </script>
 
 <template>
     <nav>Navigation</nav>
-    <main>Main Content</main>
+    <main v-html = "message.toUpperCase()"></main>
+    <div :class = "name"> This is a message. </div>
 </template>
 
 <style scoped>
     main{background-color: white;}
+    .content{color: blue;}
 </style>
