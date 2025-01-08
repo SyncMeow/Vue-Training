@@ -1,30 +1,47 @@
 <script setup>
-    let message = "<u>Hello Vue</u>";
-    let name = "content";
-    let level = 1;
-    let topics = ["JavaScript", "CSS", "HTML", "Vue.js", "Djangle", "MariaDB"];
-    let contentDict = {Frontend: "Vue.js", Backend: "Django.py", Database: "MariaDB"};
+    import {ref} from "vue";
+
+    let className = ref("plainText");
+
+    let flag = ref(0);
+
+    let handler = function() {
+        flag.value = flag.value? 0: 1;
+        className.value = className.value === "plainText"? "title highlight": "plainText";
+    };
+
+    let content = ["There is a secret message behind this text", "Congratulations You found it"];
 </script>
 
 <template>
-    <nav>Navigation</nav>
-    <main v-html = "message.toUpperCase()"></main>
-    <div :class = "name"> This is a message. </div>
-    <div v-if = "level >= 3"> You have expertised it. </div>
-    <div v-else-if = "level == 2"> You are quite good at it. </div>
-    <div v-else> 
+    <main>
+        <h1>Home</h1>
+
+        <div><input type = "text" /></div>
+        <div><textarea> Write something in it. </textarea></div>
+
         <div>
-            <h3> God damn you are such a noob. </h3>
-            <h4> You should start from the following topics. </h4>
+            <input type = "checkbox" />
+            <input type = "radio" />
         </div>
-        <ul>
-            <!-- <li v-for = "(name, index) in topics">{{ index+1 }} : {{ name }}</li> -->
-            <li v-for = "(name, key) in contentDict">{{ key }} : {{ name }}</li>
-        </ul>
-    </div>
+        
+        <div>
+            <select>
+                <option> Option 1 </option>
+                <option> Option 2 </option>
+            </select>
+        </div>
+
+        <div :class = "className">{{ content[flag] }}</div>
+
+        <button @click="handler">Click me</button>
+    </main>
 </template>
 
 <style scoped>
     main{background-color: white;}
+    .title{font-weight: bold;}
+    .highlight{color: red;}
     .content{color: blue;}
+    
 </style>
