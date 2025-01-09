@@ -1,51 +1,23 @@
 <script setup>
-import { ref } from "vue";
+import {ref} from "vue";
+import MainComp from "./Main.vue";
 
-import Nav from "./Nav.vue";
+let visible = ref(true);
 
-let className = ref("plainText");
-
-let flag = ref(0);
-
-let handler = function () {
-    flag.value = flag.value ? 0 : 1;
-    className.value =
-        className.value === "plainText" ? "title highlight" : "plainText";
+let hide = function() {
+    visible.value = false;
 };
 
-let content = [
-    "There is a secret message behind this text",
-    "Congratulations You found it",
-];
-
-let gender = ref(null);
-
-let formatter = function(value){
-    if (value == null) return "";
-
-    let res = "";
-    for (let i = 0; i < value.length; i++) {
-        res += (!i)? value[i].toUpperCase() : value[i].toLowerCase();
-    }
-    return res;
+let show = function() {
+    visible.value = true;
 };
 
 </script>
 
 <template>
-    <main>
-        <h1>Home</h1>
-
-        <Nav title = "This is the navigation page"></Nav>
-
-        Male <input type="radio" value="male" v-model="gender" />
-        Female <input type="radio" value="female" v-model="gender" />
-        <div> Your gender is {{ formatter(gender) }} </div>
-
-        <div :class="className">{{ content[flag] }}</div>
-
-        <button @click="handler">Click me</button>
-    </main>
+    <MainComp v-if="visible"></MainComp>
+    <button @click="hide">Hide</button>
+    <button @click="show">Show</button>
 </template>
 
 <style scoped>

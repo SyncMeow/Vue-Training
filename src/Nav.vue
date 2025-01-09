@@ -1,5 +1,8 @@
 <script setup>
-    defineProps(["title"]);
+    let emit = defineEmits(["handler"]);
+    let func = function() {
+        emit("handler");
+    };
 </script>
 <template>
     <nav>
@@ -18,6 +21,10 @@
                 <router-link to="/contact">Contact</router-link>
             </li>
         </ul>
+
+        <div>
+            <button @click="func">Button</button>
+        </div>
     </nav>
 </template>
 <style scoped>
