@@ -1,6 +1,8 @@
 <script setup>
 import { ref } from "vue";
 
+import Nav from "./Nav.vue";
+
 let className = ref("plainText");
 
 let flag = ref(0);
@@ -34,24 +36,7 @@ let formatter = function(value){
     <main>
         <h1>Home</h1>
 
-        <!--
-
-        <div><input type = "text" /></div>
-        <div><textarea> Write something in it. </textarea></div>
-
-        <div>
-            <input type = "checkbox" />
-            <input type = "radio" />
-        </div>
-        
-        <div>
-            <select>
-                <option> Option 1 </option>
-                <option> Option 2 </option>
-            </select>
-        </div>
-
-        -->
+        <Nav title = "This is the navigation page"></Nav>
 
         Male <input type="radio" value="male" v-model="gender" />
         Female <input type="radio" value="female" v-model="gender" />
