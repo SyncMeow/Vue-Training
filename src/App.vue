@@ -1,39 +1,15 @@
 <script setup>
-import {ref} from "vue";
-import MainComp from "./Main.vue";
-
-let visible = ref(true);
-
-let hide = function() {
-    visible.value = false;
-};
-
-let show = function() {
-    visible.value = true;
-};
-
+import { onMounted, ref } from "vue";
+import ClassSchedule from "./ClassSchedule.vue"; 
 </script>
 
 <template>
-    <MainComp v-if="visible"></MainComp>
-    <button @click="hide">Hide</button>
-    <button @click="show">Show</button>
+    <ClassSchdule />
 </template>
 
 <style scoped>
-main {
-    background-color: white;
-}
-
-.title {
+.headline {
+    font-size: 20px;
     font-weight: bold;
-}
-
-.highlight {
-    color: red;
-}
-
-.content {
-    color: blue;
 }
 </style>
