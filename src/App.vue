@@ -1,10 +1,10 @@
 <script setup>
 import { onMounted, ref } from "vue";
-import ClassSchedule from "./ClassSchedule.vue"; 
+import BookSearch from "./BookSearch.vue"; 
 </script>
 
 <template>
-    <ClassSchdule />
+    <BookSearch />
 </template>
 
 <style scoped>
