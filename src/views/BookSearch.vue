@@ -29,6 +29,8 @@
     const showTagModal = ref(false);
     const selectedBook = ref(null);
     const newTag = ref('');
+    const tagError = ref(null);
+    const isTagErrorLeaving = ref(false);
 
     const searchBooks = async () => {
         if (!searchQuery.value.trim()) {
@@ -127,9 +129,13 @@
         if (!trimmedTag || !selectedBook.value) return;
 
         if (selectedBook.value.tags.includes(trimmedTag)) {
-            error.value = "This tag already exists!";
+            tagError.value = "This tag already exists!";
             setTimeout(() => {
-                error.value = null;
+                isTagErrorLeaving.value = true;
+                setTimeout(() => {
+                    tagError.value = null;
+                    isTagErrorLeaving.value = false;
+                }, 100);
             }, 2000);
             return;
         }
@@ -151,7 +157,7 @@
             selectedBook.value.tags.push(trimmedTag);
             closeTagModal();
         } catch (err) {
-            error.value = err.message;
+            tagError.value = err.message;
             console.error("Error adding tag:", err);
         }
     };
@@ -214,7 +220,6 @@
         <div v-if="showTagModal" class="modal-overlay" @click="closeTagModal">
             <div class="modal-content" @click.stop>
                 <h3 class="modal-title">Add New Tag</h3>
-                <div v-if="error" class="error-message">{{ error }}</div>
                 <input 
                     v-model="newTag"
                     type="text"
@@ -222,6 +227,10 @@
                     class="tag-input"
                     @keyup.enter="addTag"
                 >
+                <div v-if="tagError" 
+                    :class="['warning-message', { 'fade-out': isTagErrorLeaving }]">
+                    {{ tagError }}
+                </div>
                 <div class="modal-buttons">
                     <button @click="addTag" class="add-button">Add Tag</button>
                     <button @click="closeTagModal" class="cancel-button">Cancel</button>
