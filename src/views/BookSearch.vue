@@ -5,7 +5,7 @@
         constructor(id, title, imgSrc, tags, author, url) {
             this.id = id;
             this.title = title;
-            this.imgSrc = `${API_URL}/data/books/images/${imgSrc}`; 
+            this.imgSrc = `${API_URL}/data/books/images/${imgSrc}?api_key=${API_KEY}`; 
             this.tags = tags;
             this.author = author;
             this.url = url;
@@ -312,18 +312,16 @@
     }
 
     .add-tag-button {
-        background: #007BFF;
+        background: #888888;
         color: white;
-        width: 24px;
-        height: 24px;
-        border-radius: 12px;
+        padding: 5px 10px;
+        border-radius: 5px;
+        font-size: 18px;
         border: none;
         cursor: pointer;
-        display: flex;
+        display: inline-flex;
         align-items: center;
         justify-content: center;
-        font-size: 18px;
-        padding: 0;
         margin-left: 5px;
     }
 
