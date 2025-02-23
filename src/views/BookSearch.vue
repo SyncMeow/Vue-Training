@@ -240,6 +240,7 @@
     </div>
 </template>
 <style scoped>
+    /* Container Layout */
     .books-container {
         padding: 20px;
         max-width: 1200px;
@@ -252,6 +253,7 @@
         gap: 20px;
     }
 
+    /* Book Card Styles */
     .book-card {
         background: #f5f5f5;
         padding: 20px;
@@ -278,21 +280,6 @@
         margin: 10px 0;
     }
 
-    .tags {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 5px;
-        margin-bottom: 10px;
-    }
-
-    .tag {
-        background: #ddd;
-        padding: 5px 10px;
-        border-radius: 5px;
-        font-size: 14px;
-    }
-
     .author {
         font-size: 14px;
         color: #555;
@@ -308,6 +295,39 @@
         border-radius: 5px;
     }
 
+    /* Tag Styles */
+    .tags {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 5px;
+        margin-bottom: 10px;
+    }
+
+    .tag {
+        background: #ddd;
+        padding: 5px 10px;
+        border-radius: 5px;
+        font-size: 14px;
+    }
+
+    .add-tag-button {
+        background: #007BFF;
+        color: white;
+        width: 24px;
+        height: 24px;
+        border-radius: 12px;
+        border: none;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 18px;
+        padding: 0;
+        margin-left: 5px;
+    }
+
+    /* Search Components */
     .search-container {
         display: flex;
         gap: 10px;
@@ -346,37 +366,7 @@
         min-width: 120px;
     }
 
-    .warning-message {
-        background-color: #fff3cd;
-        color: #856404;
-        padding: 12px;
-        border-radius: 5px;
-        margin-bottom: 20px;
-        border: 1px solid #ffeeba;
-        text-align: center;
-        animation: fadeIn 0.2s ease-in;
-    }
-
-    .warning-message.fade-out {
-        animation: fadeOut 0.1s ease-out forwards;
-    }
-
-    .add-tag-button {
-        background: #007BFF;
-        color: white;
-        width: 24px;
-        height: 24px;
-        border-radius: 12px;
-        border: none;
-        cursor: pointer;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 18px;
-        padding: 0;
-        margin-left: 5px;
-    }
-
+    /* Modal Styles */
     .modal-overlay {
         position: fixed;
         top: 0;
@@ -402,19 +392,6 @@
         font-size: 18px;
     }
 
-    .error-message {
-        color: red;
-        margin-bottom: 10px;
-    }
-
-    .tag-input {
-        width: 100%;
-        padding: 8px;
-        border: 1px solid #ddd;
-        border-radius: 4px;
-        margin-bottom: 15px;
-    }
-
     .modal-buttons {
         display: flex;
         gap: 10px;
@@ -438,19 +415,36 @@
         color: white;
     }
 
-    /* Responsive Design */
-    @media (max-width: 1024px) {
-        .container {
-            grid-template-columns: repeat(2, 1fr);
-        }
+    .tag-input {
+        width: 100%;
+        padding: 8px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        margin-bottom: 15px;
     }
 
-    @media (max-width: 768px) {
-        .container {
-            grid-template-columns: 1fr;
-        }
+    /* Warning Messages */
+    .warning-message {
+        background-color: #fff3cd;
+        color: #856404;
+        padding: 12px;
+        border-radius: 5px;
+        margin-bottom: 20px;
+        border: 1px solid #ffeeba;
+        text-align: center;
+        animation: fadeIn 0.2s ease-in;
     }
 
+    .warning-message.fade-out {
+        animation: fadeOut 0.1s ease-out forwards;
+    }
+
+    .error-message {
+        color: red;
+        margin-bottom: 10px;
+    }
+
+    /* Animations */
     @keyframes fadeIn {
         from {
             opacity: 0;
@@ -470,6 +464,19 @@
         to {
             opacity: 0;
             transform: translateY(-10px);
+        }
+    }
+
+    /* Responsive Design */
+    @media (max-width: 1024px) {
+        .container {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    @media (max-width: 768px) {
+        .container {
+            grid-template-columns: 1fr;
         }
     }
 </style>
