@@ -1,6 +1,6 @@
 <script setup>
 import { onMounted, ref } from "vue";
-import BookSearch from "./BookSearch.vue"; 
+import BookSearch from "./views/BookSearch.vue"; 
 </script>
 
 <template>
